@@ -9,6 +9,16 @@ var cachefiles = [
   "images/images3.jpg",
 ];
 
+self.addEventListener("install", (e) => {
+  console.log("[Service Worker] Install");
+  e.waitUntil(
+    caches.open(cacheName).then((cache) => {
+      console.log("[Service Worker] caching files");
+      return cache.addAll(cachefiles);
+    })
+  );
+});
+
 self.addEventListener("fetch", function (e) {
   e.respondWith(
     caches.match(e.request).then(function (r) {
@@ -26,13 +36,3 @@ self.addEventListener("fetch", function (e) {
     })
   );
 });
-
-// self.addEventListener("install", (e) => {
-//   console.log("[Service Worker] Install");
-//   e.waitUntil(
-//     caches.open(cacheName).then((cache) => {
-//       console.log("[Service Worker] caching files");
-//       return cache.addAll(cachefiles);
-//     })
-//   );
-// });
