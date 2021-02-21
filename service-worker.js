@@ -3,7 +3,7 @@ var cachefiles = [
   "index.html",
   "product.js",
   "petstore.webmanifest",
-  "images/store-icon.jpg",
+  "images/store_icon.jpg",
   "images/images.jpg",
   "images/images2.jpg",
   "images/images3.jpg",
